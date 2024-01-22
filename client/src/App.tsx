@@ -38,8 +38,10 @@ const Admin: React.FC = () => {
   return (
     <React.Fragment>
       <AdminNav />
+      <section className="flex w-full portal overflow-y-scroll">
       <AdminSidebar />
       <Outlet />
+      </section>
     </React.Fragment>
   )
 }
@@ -53,7 +55,11 @@ function App() {
           <Route path='/report' element={<AssessmentReport />} />
         </Route>
         <Route path="/" element={<Admin/>}>
-          <Route path="/admin" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/assessments" element={<Dashboard />} />
+          <Route path="/folders" element={<Dashboard />} />
+          <Route path="/feedback" element={<Dashboard />} />
+          <Route path="/targets" element={<Dashboard />} />
           <Route path='/admin-list' element={<AdminList />} />
           <Route path='/work-styles/:id' element={<WorkStyleGraph />} />
         </Route>
