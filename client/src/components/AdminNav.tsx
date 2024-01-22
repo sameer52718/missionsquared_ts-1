@@ -6,21 +6,6 @@ import { useEffect, useState } from 'react'
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState<boolean>(false)
-    const [scrollPosition, setScrollPositioin] = useState<number>(0)
-    
-    useEffect(() => {
-        
-        const handleScroll = () => { 
-            setScrollPositioin(window.scrollY)
-         }
-
-        window.addEventListener("scroll", handleScroll)
-    
-      return () => {
-        window.removeEventListener("scroll", handleScroll)
-      }
-    }, [])
-    
 
     const handleNavbar = () => { 
         setShowMenu(!showMenu)
@@ -28,13 +13,13 @@ const Navbar = () => {
 
 
   return (
-    <header className={`fixed w-full transition-all duration-600 ${scrollPosition > 10 ? 'bg-black-100' : 'bg-transparent'}`}>
-        <nav className={`container mx-auto flex justify-between gap-4 transition-all duration-600 items-center px-5 ${scrollPosition > 10 ? 'py-3' : 'py-5'}`}>
+    <header className={`fixed w-full transition-all duration-600 bg-purple-100`}>
+        <nav className={`container mx-auto flex justify-between gap-4 transition-all duration-600 items-center px-2 py-2`}>
             <a href="https://missionsquared.com">
-                <img src={`${scrollPosition > 10 ? '/logo_white.svg' : '/logo_black.svg'}`} className='w-16' alt="" />
+                <img src="/EQ2_Logo_White.svg" className='w-32' alt="" />
             </a>
 
-            <ul className={`navbar lg:flex hidden xl:gap-16 lg:gap-6 uppercase font-montserrat items-center ${scrollPosition > 10 ? 'text-white' : 'text-black'} font-light`}>
+            <ul className={`navbar lg:flex hidden xl:gap-16 lg:gap-6 uppercase font-montserrat items-center text-white font-light`}>
                 <li className='group'><a href="#" className='hover:text-orange-100 flex items-center transition-colors duration-300 relative gap-1 py-4'>dashboard</a>
                 </li>
 
@@ -62,7 +47,7 @@ const Navbar = () => {
             </div>
             </form>
 
-            <button className={`text-3xl lg:hidden ${scrollPosition > 10 ? 'text-white border-white' : 'text-black border-black'} p-1 rounded-md border `} onClick={()=> setShowMenu(!showMenu)}>
+            <button className={`text-3xl lg:hidden text-white p-1 rounded-md border `} onClick={()=> setShowMenu(!showMenu)}>
                 {
                     showMenu ? <IoIosClose /> : <IoIosMenu />
                 }

@@ -11,6 +11,7 @@ import Footer from "./components/Footer"
 
 // Admin Partials
 import AdminNav from "./components/AdminNav"
+import AdminSidebar from "./components/AdminSidebar"
 
 
 // Client VIEWS
@@ -21,6 +22,7 @@ import AssessmentReport from "./pages/website/AssessmentReport"
 // Admin VIEWS0
 import AdminList from "./pages/adminportal/AdminList"
 import WorkStyleGraph from "./pages/adminportal/WorkStyleGraph"
+import Dashboard from "./pages/adminportal/Dashboard"
 
 const Client: React.FC = () => {
   return (
@@ -36,6 +38,7 @@ const Admin: React.FC = () => {
   return (
     <React.Fragment>
       <AdminNav />
+      <AdminSidebar />
       <Outlet />
     </React.Fragment>
   )
@@ -50,6 +53,7 @@ function App() {
           <Route path='/report' element={<AssessmentReport />} />
         </Route>
         <Route path="/" element={<Admin/>}>
+          <Route path="/admin" element={<Dashboard />} />
           <Route path='/admin-list' element={<AdminList />} />
           <Route path='/work-styles/:id' element={<WorkStyleGraph />} />
         </Route>
