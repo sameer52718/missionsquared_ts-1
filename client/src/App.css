@@ -129,6 +129,31 @@ header{
     background-color: white;
   }
 
+
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+.admin_sidebar,
+.portal{
+  height: calc(100vh - 90px);
+}
+
+
+.admin_sidebar::-webkit-scrollbar{
+  width: 5px;
+}
+
+
+.dashboard_head{
+  font-size: 28px;
+}
+
+
+
+
+
 @media (max-width: 991px) {
     .hero{
         background-size: cover;
