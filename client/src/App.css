@@ -78,6 +78,11 @@ header{
 
 ::-webkit-scrollbar{
   width: 8px;
+  background-color: #EDEDED;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color:#7c7c7c;
 }
 
 .admin_sidebar,

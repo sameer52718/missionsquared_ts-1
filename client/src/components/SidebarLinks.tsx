@@ -17,8 +17,8 @@ const SidebarLinks : React.FC<SidebarLinksProps> = ({sidelink, isActive, onClick
   return (
     
     <NavLink to={link} onClick={onClick}>
-      <div className={`w-full flex flex-col items-center ${activeLink} p-3 rounded-lg`}>
-        <img src={icon} alt={label} className="w-10 mb-1" />
+      <div className={`w-full flex flex-col items-center text-center ${activeLink} p-3 rounded-lg`}>
+        <img src={icon} alt={label} className="w-8 mb-1" />
         <span>{label}</span>
       </div>
     </NavLink>

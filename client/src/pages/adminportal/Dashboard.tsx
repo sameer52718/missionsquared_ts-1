@@ -47,8 +47,8 @@ const extractedData = table.map(({id, firstname, lastname, completed_date, anima
       <div className="container flex justify-between px-4 py-3 w-full bg-white">
           <h1 className='dashboard_head text-purple-50 font-meeriweather'>Dashboard</h1>
       </div>
-      <div className="container px-4 py-3 w-full">
-        <div className="flex justify-between gap-6 p-4">
+      <div className="container py-3 w-full">
+        <div className="flex justify-between xl:flex-nowrap flex-wrap gap-6 p-4">
           <div className='flex-1'>
           <h3 className='text-2xl text-purple-50 font-meeriweather'>Recently Completed Assessments</h3>
             <Table columns={assessmentsColumns1} tableData={extractedData} rowLimit={4}/>

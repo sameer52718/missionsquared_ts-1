@@ -56,7 +56,7 @@ function App() {
         </Route>
         <Route path="/" element={<Admin/>}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/assessments" element={<Dashboard />} />
+          <Route path="/assessments" element={<AdminList />} />
           <Route path="/folders" element={<Dashboard />} />
           <Route path="/feedback" element={<Dashboard />} />
           <Route path="/targets" element={<Dashboard />} />
