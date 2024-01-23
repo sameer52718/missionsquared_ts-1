@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 import React, { FunctionComponent } from "react";
@@ -53,7 +52,7 @@ const UnlabeledLine:React.FC<UnlabeledLineProps> = ({data}) => {
 
   return (
     <LineChart
-    width={100}
+    width={150}
     height={50}
     data={prevdata}
     margin={{
