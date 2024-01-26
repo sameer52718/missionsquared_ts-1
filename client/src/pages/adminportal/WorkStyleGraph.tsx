@@ -11,35 +11,14 @@ const WorkStyleGraph = () => {
   const tableRow = adminTableData.find((dt) => dt.id === parseInt(id!, 10));
 
   return (
-    <main className='bg-beige-100'>
-      <section className='w-full md:pt-36'>
+    <main className='h-full overflow-scroll flex-1 bg-gray-100'>
+      <section className='w-full'>
         <AssessmentProfile profile={tableRow!} />
-        <div className="flex container gap-10 flex-wrap mx-auto md:px-10 px-5">
-          <div className="border border-gray-400 p-1 min-w-36 flex flex-col rounded-md">
-            <small className='mb-1 text-gray-700 font-semibold'>Filter By Category</small>
-            <select name="filter" id="" className='bg-transparent focus:outline-none'>
-              <option value="View All" selected>View All</option>
-              <option value="Self-Management">Self-Management</option>
-              <option value="Motivational Factors">Motivational Factors</option>
-              <option value="Interpersonal Dynamics">Interpersonal Dynamics</option>
-            </select>
-          </div>
-
-          <div className="border border-gray-400 p-1 min-w-36 flex flex-col rounded-md">
-            <small className='mb-1 text-gray-700 font-semibold'>Sort By</small>
-            <select name="filter" id="" className='bg-transparent focus:outline-none'>
-              <option value="category" defaultValue="category">Category</option>
-              <option value="name">Name</option>
-              <option value="score">Score</option>
-            </select>
-          </div>
-        </div>
       </section>
-      <section className="pt-20">
-        <div className="container bg-beige-100 mx-auto lg:px-24 md:px-10 px-5">
+      <section className="py-5">
+        <div className="container mx-auto px-5">
           <h4 className="font-semibold text-xl mb-4">Work Style Chart</h4>
-          <div className="icsp_chart p-4 w-max rounded-md">
-            <img src="/iscp-full-background.svg" alt="" />
+          <div className="icsp_chart border w-max rounded-md mb-20">
             <LabeledLine />
           </div>
           <ul className="space-y-4 my-4">
@@ -57,7 +36,7 @@ const WorkStyleGraph = () => {
       </section>
 
       <section className="py-20">
-        <div className="container bg-beige-100 mx-auto md:px-10 px-5">
+        <div className="containermx-auto px-5">
           <ScoresChart />
         </div>
       </section>

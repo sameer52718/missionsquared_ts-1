@@ -11,8 +11,9 @@ interface TableBodyProps {
 
 
 const TableBody: React.FC<TableBodyProps> = ({ tableData }) => {
+  console.log(tableData)
   return (
-    <tbody className='bg-white'>
+    <tbody className='bg-white rounded-lg'>
       {tableData.map((data) => {
 
         return (
@@ -25,15 +26,16 @@ const TableBody: React.FC<TableBodyProps> = ({ tableData }) => {
             </td>
             <td className='py-2 px-3'>
               {
-                (data.has_360) ?
-                  (<NavLink to="#"><img src="/360-active.svg" className='w-8' alt="" /></NavLink>) : (<img src="/360-inactive.svg" className='w-8' alt='' />)
+                ('has_360' in data) ? (data.has_360) ?
+                (<NavLink to="#"><img src="/360-active.svg" className='w-8' alt="" /></NavLink>) : (<img src="/360-inactive.svg" className='w-8' alt='' />) : null
               }
             </td>
             <td className='py-2 px-3'>
               {
+                ('multiples' in data) ?
                 data.multiples ?
                   (<NavLink to="#"><img src="/multiples-active.svg" className='w-8' alt="" /></NavLink>)
-                  : (<img src="/multiples-inactive.svg" className='w-8' alt='' />)
+                  : (<img src="/multiples-inactive.svg" className='w-8' alt='' />) : null
               }
             </td>
           </tr>

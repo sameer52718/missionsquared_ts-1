@@ -8,11 +8,11 @@ interface TableHeadProps {
 
 const TableHead: React.FC<TableHeadProps> = ({ columns }) => {
     return (
-        <thead className="bg-beige-900">
+        <thead>
             <tr>
                 {
                     columns.map(({ label, accessor }) => {
-                        return <th className='py-3 px-3 whitespace-nowrap text-left' key={accessor}>{label}</th>
+                        return <th className='py-3 px-3 whitespace-nowrap text-gray-600 text-left' key={accessor}>{label}</th>
                     })
                 }
             </tr>

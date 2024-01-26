@@ -9,6 +9,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 import useWidth from "../../hooks/useWidth";
+import CustomTick from './CustomTick'
 
 const data = [
   {
@@ -56,6 +57,10 @@ const data = [
     pv: 43,
   }
 ];
+
+
+
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderCustomizedLabel = (props: any) => {
   const { x, y, width, value } = props;
@@ -69,7 +74,7 @@ const renderCustomizedLabel = (props: any) => {
   return (
     <g>
       
-      <circle cx={cx} cy={cy} r={radius} fill="#ffffff"  stroke="#458FA3" strokeWidth={4}/>
+      <circle cx={cx} cy={cy} r={radius} fill="#ffffff"  stroke="#6A37A6" strokeWidth={4}/>
       <text
         x={window < parseInt(md) ? cx  :  value> 0 ?  cx + 25 : cx -25 }
         y={cy +1}
@@ -84,7 +89,24 @@ const renderCustomizedLabel = (props: any) => {
   );
 };
 const ScoreChart = () => {
-  const {width, breakpoints:{md}} = useWidth()
+  const {width, breakpoints:{md}} = useWidth();
+
+
+  const handleTickClick = (value: string) => {
+    console.log("Clicked on tick:", value);
+    // Your click handling logic
+  };
+  
+  const handleTickMouseEnter = (value: string) => {
+    console.log("Hovered on tick:", value);
+  };
+  
+  const handleTickMouseLeave = () => {
+    
+  };
+  
+
+
 
   return (
     <div className="w-full md:w-[80vw] h-max mx-auto bg-white p-4 rounded-md">
@@ -102,12 +124,36 @@ const ScoreChart = () => {
             }}
           
           >
-            <CartesianGrid strokeDasharray="1 2" horizontalFill={["gray", "white"]} fillOpacity={0.1} />
-            <XAxis xAxisId="topAxis" type="number" interval={0} tick={{ dy: 5 }} orientation="top" fontSize={14} />
-            <XAxis xAxisId="bottomAxis" type="number" interval={0} tick={{ dy: 5 }} orientation="bottom" fontSize={14} />
-            <YAxis type="category" dataKey="name" width={width < parseInt(md) ? 60 : 90} fontSize={width < parseInt(md) ? 9 : 12}  />
+            <CartesianGrid strokeDasharray="1 2" horizontalFill={["white"]} fillOpacity={0.1} />
+            <XAxis 
+            xAxisId="topAxis"
+             type="number"
+             domain={[-50, 50]}
+             color="#6A37A6" 
+             interval={0} 
+             tick={{ dy: -5 }}  
+             orientation="top" 
+             fontSize={14} 
+             />
+            <XAxis 
+            xAxisId="bottomAxis" 
+            type="number" 
+            color="#6A37A6" 
+            interval={0} 
+            tick={{ dy: 5 }} 
+            orientation="bottom" 
+            fontSize={14} 
+            />
+            <YAxis 
+            type="category" 
+            dataKey="name" 
+            width={width < parseInt(md) ? 60 : 110} 
+            fontSize={width < parseInt(md) ? 9 : 12} 
+            color="#6A37A6"
+            tick={<CustomTick onClick={handleTickClick} onMouseEnter={handleTickMouseEnter} onMouseLeave={handleTickMouseLeave} />}
+            />
             <Tooltip />
-            <Bar  dataKey="pv" fill="#458FA3" stroke="#458FA3" maxBarSize={width < parseInt(md)?2 : 3} xAxisId="bottomAxis" >
+            <Bar  dataKey="pv" fill="#6A37A6" stroke="#6A37A6" maxBarSize={width < parseInt(md)?2 : 3} xAxisId="bottomAxis" >
               <LabelList  dataKey="pv" content={renderCustomizedLabel} />
             </Bar>
           </BarChart>

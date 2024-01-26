@@ -38,7 +38,7 @@ const Admin: React.FC = () => {
   return (
     <React.Fragment>
       <AdminNav />
-      <section className="flex w-full portal overflow-y-scroll">
+      <section className="flex w-full portal overflow-hidden">
       <AdminSidebar />
       <Outlet />
       </section>
@@ -56,7 +56,7 @@ function App() {
         </Route>
         <Route path="/" element={<Admin/>}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/assessments" element={<Dashboard />} />
+          <Route path="/assessments" element={<AdminList />} />
           <Route path="/folders" element={<Dashboard />} />
           <Route path="/feedback" element={<Dashboard />} />
           <Route path="/targets" element={<Dashboard />} />

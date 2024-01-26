@@ -52,7 +52,7 @@ const AdminSidebar: React.FC = () => {
 
 
   return (
-    <aside className='admin_sidebar overflow-y-scroll bg-purple-100 text-white flex flex-col gap-5 w-52 px-4 pt-2'>
+    <aside className='admin_sidebar overflow-y-scroll bg-purple-100 text-white flex flex-col gap-5 w-40 px-4 pt-2'>
       {
         sidebarContent.map((ln, index):React.ReactNode =>{
           return (
