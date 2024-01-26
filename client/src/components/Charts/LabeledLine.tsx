@@ -64,16 +64,14 @@ const LabeledLine:React.FC<LabeledLineProps> = () => {
       height={width < parseInt(sm) ? 110 : 210}
       data={data}
       margin={{
-        top:30,
-        bottom:20,
-        left:40,
-        right:10
+        top:10,
+        bottom:40,
+        left:35,
+        right:35
       }}
+      style={{backgroundImage:'url("/public/iscp-full-background.svg")', backgroundSize:'cover', backgroundPosition:'center center'}}
     >
-      {/* <CartesianGrid horizontalPoints={[0 , 200]} verticalPoints={[0 ,50,100 ,150, 200 ,250 ,300 ]} stroke="#000000"/> */}
-      {/* <CartesianGrid  /> */}
       <Tooltip />
-      {/* <XAxis  type="number" dataKey={"uv"} domain={[50, 50]} /> */}
 
       <Line
         type="monotoneY"
