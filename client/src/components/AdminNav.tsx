@@ -1,16 +1,8 @@
-import {GoChevronDown} from 'react-icons/go'
 import {IoIosMenu, IoIosClose, IoIosSearch} from 'react-icons/io'
-import Button from './Button'
-import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import {useState } from 'react'
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState<boolean>(false)
-
-    const handleNavbar = () => { 
-        setShowMenu(!showMenu)
-     }
-
 
   return (
     <header className={`w-full transition-all duration-600 bg-purple-100`}>
