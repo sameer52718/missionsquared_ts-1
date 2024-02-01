@@ -10,6 +10,8 @@ import {
 } from "recharts";
 import useWidth from "../../hooks/useWidth";
 import CustomTick from './CustomTick'
+import { useState } from "react";
+import AssessmentDefinitionModal from "../Modals/AssessmentDefinitionModal";
 
 const data = [
   {
@@ -62,7 +64,7 @@ const data = [
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const renderCustomizedLabel = (props: any) => {
+export const renderCustomizedLabel = (props: any) => {
   const { x, y, width, value } = props;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {width:window,breakpoints:{md}} = useWidth()
@@ -73,7 +75,6 @@ const renderCustomizedLabel = (props: any) => {
   
   return (
     <g>
-      
       <circle cx={cx} cy={cy} r={radius} fill="#ffffff"  stroke="#6A37A6" strokeWidth={4}/>
       <text
         x={window < parseInt(md) ? cx  :  value> 0 ?  cx + 25 : cx -25 }
@@ -90,27 +91,32 @@ const renderCustomizedLabel = (props: any) => {
 };
 const ScoreChart = () => {
   const {width, breakpoints:{md}} = useWidth();
+  const [showModal, setShowModal] = useState(false);
+  const [labelValue, setLabelValue] = useState<{ name: string; pv: number; }[]>([]);
 
 
   const handleTickClick = (value: string) => {
-    console.log("Clicked on tick:", value);
-    // Your click handling logic
+    setShowModal(true);
+    const choosenValue = data.find((val)=>val.name === value);
+    if (choosenValue){
+      setLabelValue([choosenValue]);
+    }
   };
-  
-  const handleTickMouseEnter = (value: string) => {
-    console.log("Hovered on tick:", value);
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setLabelValue([]);
   };
-  
-  const handleTickMouseLeave = () => {
-    
-  };
-  
 
-
+  
 
   return (
     <div className="w-full md:w-[80vw] h-max mx-auto bg-white p-4 rounded-md">
       <div style={{ position: "relative" }}>
+        <AssessmentDefinitionModal
+        showModal={showModal}
+        modalText={labelValue}
+        onClose={handleCloseModal}
+        />
         <ResponsiveContainer width="100%" height={500}>
           <BarChart
             barGap={1}
@@ -150,7 +156,7 @@ const ScoreChart = () => {
             width={width < parseInt(md) ? 60 : 110} 
             fontSize={width < parseInt(md) ? 9 : 12} 
             color="#6A37A6"
-            tick={<CustomTick onClick={handleTickClick} onMouseEnter={handleTickMouseEnter} onMouseLeave={handleTickMouseLeave} />}
+            tick={<CustomTick onClick={handleTickClick}/>}
             />
             <Tooltip />
             <Bar  dataKey="pv" fill="#6A37A6" stroke="#6A37A6" maxBarSize={width < parseInt(md)?2 : 3} xAxisId="bottomAxis" >
